@@ -1,0 +1,9 @@
+name: Kalolsavam Module
+type: module
+description: 'To manage the marks of the participants'
+package: custom
+core: 8.x
+dependencies:
+  - drupal:node
+  - drupal:user
+  - examples:examples

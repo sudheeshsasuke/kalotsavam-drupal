@@ -1,0 +1,95 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the dbtng_example module.
+ */
+
+/**
+ * Implements hook_install().
+ *
+ * Creates some default entries on this module custom table.
+ *
+ * @see hook_install()
+ *
+ * @ingroup dbtng_example
+ */
+function kalolsavam_install() {
+  // Add a default entry.
+  $fields = [
+    'competition' => 'Singing',
+    'chest_no' => '13',
+    'mark' => '40',
+  ];
+  db_insert('kalolsavam')
+    ->fields($fields)
+    ->execute();
+
+  // Add another entry.
+  $fields = [
+    'competition' => 'dance',
+    'chest_no' => '23',
+    'mark' => '60',
+    'uid' => 1,
+  ];
+  db_insert('kalolsavam')
+    ->fields($fields)
+    ->execute();
+}
+
+/**
+ * Implements hook_schema().
+ *
+ * Defines the database tables used by this module.
+ *
+ * @see hook_schema()
+ *
+ * @ingroup dbtng_example
+ */
+function kalolsavam_schema() {
+  $schema['kalolsavam'] = [
+    'description' => 'Stores competition participant marks.',
+    'fields' => [
+      'pid' => [
+        'type' => 'serial',
+        'not null' => TRUE,
+        'description' => 'Primary Key: Unique person ID.',
+      ],
+      'uid' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => "Creator user's {users}.uid",
+      ],
+      'competition' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Name of the competition.',
+      ],
+      'chest_no' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'size' => 'tiny',
+        'description' => 'The chest no of the participant.',
+      ],
+      'mark' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'size' => 'tiny',
+        'description' => 'The mark of the participant.',
+      ],
+    ],
+    'primary key' => ['pid'],
+    'indexes' => [
+      'competition' => ['competition'],
+      'chest_no' => ['chest_no'],
+      'mark' => ['mark'],
+    ],
+  ];
+
+  return $schema;
+}

@@ -1,0 +1,47 @@
+kalolsavam:
+  path: 'marks'
+  defaults:
+    _title: 'Overall Marks'
+    _controller: '\Drupal\kalolsavam\Controller\KalolsavamController::entryList'
+  requirements:
+    _permission: 'access content'
+
+kalolsavam_list:
+  path: 'marks/list'
+  defaults:
+    _title: 'List'
+    _controller: '\Drupal\kalolsavam\Controller\KalolsavamController::entryList'
+  requirements:
+    _permission: 'view own content'
+
+kalolsavam_add:
+  path: 'marks/add'
+  defaults:
+    _title: 'Add entry'
+    _form: '\Drupal\kalolsavam\Form\KalolsavamAddForm'
+  requirements:
+    _permission: 'edit own content'
+
+kalolsavam_update:
+  path: 'marks/update'
+  defaults:
+    _title: 'Update entry'
+    _form: '\Drupal\kalolsavam\Form\KalolsavamUpdateForm'
+  requirements:
+    _permission: 'edit own content'
+
+kalolsavam_advanced:
+  path: 'marks/advanced'
+  defaults:
+    _title: 'Advanced list'
+    _controller: '\Drupal\kalolsavam\Controller\KalolsavamController::entryAdvancedList'
+  requirements:
+    _permission: 'admin view content'
+
+kalolsavam_aggregate:
+  path: 'marks/aggregate'
+  defaults:
+    _title: 'Aggregate list'
+    _controller: '\Drupal\kalolsavam\Controller\KalolsavamController::aggregateMarkList'
+  requirements:
+    _permission: 'admin view content'
