@@ -1,0 +1,10 @@
+name: d8theme
+type: theme
+description: 'Working on a new custom theme for the drupal 8'
+core: 8.x
+libraries:
+  - d8theme/global-styling
+base-theme: bartik
+regions:
+  myheader: My Header
+  content: Content
